@@ -20,7 +20,12 @@ def loan_chart(id):
     total = 0 # total loan amount
     values = []
     rates = []
-    for part in sbr:
+    raw = requests.get("https://api.bitlendingclub.com/api/loan/{id}".format(id=id))
+    done = True
+    for idx,part in enumerate(sbr):
+        if total>float(raw.json()['loans'][0]['amount']) and done:
+            print("Maximum rate {}".format(rates[-1]))
+            done=False
         total = total + part[0]
         values.append(total)
         rates.append(part[1])
@@ -28,7 +33,10 @@ def loan_chart(id):
     plt.plot(values,rates)
     plt.ylabel('Nominal  %') #Ylabel
     plt.xlabel('Bitcoin amount')
-    plt.axvline(x=1.2, color='r')
+    #Getting metadata about loan
+    cutoff = float(raw.json()['loans'][0]['amount'])
+    print(cutoff)
+    plt.axvline(cutoff, color='r', linewidth=10)
     #Different id
     filename = "/home/kacper/lendon/static/images/{0}.png".format(id)
     plt.savefig(filename)

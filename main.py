@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, url_for
 from investments import loan_chart, get_funded_loans
 app = Flask(__name__)
 

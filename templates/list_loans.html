@@ -4,12 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>Loan listing</title>
-        link
     </head>
     <body>
     <a href="www.wp.pl"></a>
     {% for loan in listing %}
-    Loan id: <a href="loan/{{ loan }}">{{ loan }}</a>
+    Loan id: <a href="loan/{{ loan }}">{{ loan }}</a></br>
     {% endfor %}
+    Debug:
+    {% for element in list2 %}
+    {{ element }}
+    {% endfor %}
+
     </body>
 </html>

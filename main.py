@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template, url_for
-from investments import loan_chart, get_funded_loans
+from investments import loan_chart, get_funded_loans, weird
 app = Flask(__name__)
 
 @app.route('/')
@@ -10,7 +10,10 @@ def index():
 @app.route('/list_loans')
 def listing():
    listing = get_funded_loans()
-   return render_template("list_loans.html", listing=listing)
+   ll = []
+   for loan in listing:
+      ll.append(list(weird(loan)))
+   return render_template("list_loans.html", listing=listing, list2=ll)
 
 
 @app.route('/loan/<int:id>')

@@ -35,7 +35,7 @@ def weird(id):
     raw = requests.get("https://api.bitlendingclub.com/api/loan/{id}".format(id=id))
     done = True
     #Caveat: Not 100% -> max rate could be same as current biggest
-    max_rate = 10
+    max_rate = 10000
     for idx,part in enumerate(sbr):
         if total>float(raw.json()['loans'][0]['amount']) and done:
             max_rate = rates[-1]

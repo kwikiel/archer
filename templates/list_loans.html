@@ -6,14 +6,11 @@
         <title>Loan listing</title>
     </head>
     <body>
-    <a href="www.wp.pl"></a>
     {% for loan in listing %}
     Loan id: <a href="loan/{{ loan }}">{{ loan }}</a></br>
     {% endfor %}
-    Debug:
-    {% for element in list2 %}
-    {{ element }}
+    {% for loan in superlist %}
+    Loan ID: {{ loan[0] }} Rate: {{ loan[1] }}
     {% endfor %}
-
     </body>
 </html>

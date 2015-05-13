@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template, url_for
 from investments import loan_chart, get_funded_loans, weird
+from operator import itemgetter
 app = Flask(__name__)
 
 @app.route('/')
@@ -10,10 +11,12 @@ def index():
 @app.route('/list_loans')
 def listing():
    listing = get_funded_loans()
-   ll = []
+   superlist = []
    for loan in listing:
-      ll.append(list(weird(loan)))
-   return render_template("list_loans.html", listing=listing, list2=ll)
+      superlist.append( [ [loan], [weird(loan)[1]] ] )
+   supersorted = sorted(superlist, key=itemgetter(1))
+   brt = supersorted[::-1]
+   return render_template("list_loans.html", listing=listing, superlist=brt)
 
 
 @app.route('/loan/<int:id>')

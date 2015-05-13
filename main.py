@@ -19,7 +19,8 @@ def listing():
 @app.route('/loan/<int:id>')
 def charts(id):
    loan_chart(id)
-   return render_template("loan.html", id=id)
+   investments = weird(id)
+   return render_template("loan.html", id=id, investments = investments)
 
 if __name__ == '__main__':
    app.run(host='0.0.0.0', port=5000, debug=True)

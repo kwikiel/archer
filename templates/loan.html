@@ -13,6 +13,9 @@
 <div class="container">
     <h1 style="position: center;">{{ id }}</h1>
     <h2>Investments</h2>
+    {% for inv in investments %}
+    Amount: {{ inv[0] }} Rate: {{ inv[1] }} <br>
+    {% endfor %}
     <img class="responsive-img" src="/static/images/{{ id }}.png">
 </div>
     </body>

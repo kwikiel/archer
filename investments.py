@@ -35,19 +35,20 @@ def weird(id):
     raw = requests.get("https://api.bitlendingclub.com/api/loan/{id}".format(id=id))
     done = True
     #Caveat: Not 100% -> max rate could be same as current biggest
-    max_rate = 10000
     for idx,part in enumerate(sbr):
         if total>float(raw.json()['loans'][0]['amount']) and done:
             max_rate = rates[-1]
             #print("Maximum rate {}".format(rates[-1]))
             done=False
         total = total + part[0]
-        values.append(total)
+        values.append(part[0])
         rates.append(part[1])
     #Nominal rate
+    max_rate = 1000
     term = raw.json()['loans'][0]['term']
     real_rate = float(max_rate*(365.0/term))
-    return id,real_rate
+    caps = [(x, y) for x in values for y in rates]
+    return sorted(caps, key=itemgetter(1))
 
 def loan_chart(id):
     target = "https://api.bitlendingclub.com/api/investments/{id}".format(id=id)

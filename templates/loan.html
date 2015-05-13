@@ -11,9 +11,10 @@
     </head>
     <body>
 <div class="container">
-    <h1 style="position: center;">{{ id }}</h1>
-    <h2>Investments</h2>
-    <h2>Max rate: {{ investments[1] }}</h2>
+    <h4 style="position: center;">{{ id }}</h4>
+    <h4>Max rate: {{ investments[1] }}</h4>
+
+    <img class="responsive-img" src="/static/images/{{ id }}.png">
     <table>
         <thead>
             <tr>
@@ -30,7 +31,6 @@
     {% endfor %}
        </tbody>
     </table>
-    <img class="responsive-img" src="/static/images/{{ id }}.png">
 </div>
     </body>
 </html>

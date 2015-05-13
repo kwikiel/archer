@@ -7,7 +7,7 @@ def get_funded_loans():
     """
     Fetching current 100% loans available to bid
     """
-    raws = requests.get("http://api.bitlendingclub.com/api/loans?status=funding&denomination=btc&fundedFrom=100")
+    raws = requests.get("http://api.bitlendingclub.com/api/loans?status=funding&denomination=btc&fundedFrom=90")
     loan_list = []
     for loan in raws.json()['loans']:
         loan_list.append(loan['id'])

@@ -13,9 +13,22 @@
 <div class="container">
     <h1 style="position: center;">{{ id }}</h1>
     <h2>Investments</h2>
+    <table>
+        <thead>
+            <tr>
+                <th data-field="amount">Amount</th>
+                <th data-field="rate">Rate</th>
+            </tr>
+        </thead>
+        <tbody>
     {% for inv in investments %}
-    Amount: {{ inv[0] }} Rate: {{ inv[1] }} <br>
+    <tr>
+      <td>   Amount: {{ inv[0] }} </td>
+      <td> Rate: {{ inv[1] }}    </td>
+    </tr>
     {% endfor %}
+       </tbody>
+    </table>
     <img class="responsive-img" src="/static/images/{{ id }}.png">
 </div>
     </body>

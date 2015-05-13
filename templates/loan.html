@@ -13,6 +13,7 @@
 <div class="container">
     <h1 style="position: center;">{{ id }}</h1>
     <h2>Investments</h2>
+    <h2>Max rate: {{ investments[1] }}</h2>
     <table>
         <thead>
             <tr>
@@ -21,8 +22,8 @@
             </tr>
         </thead>
         <tbody>
-    {% for inv in investments %}
-    <tr>
+    {% for inv in investments[0] %}
+    <tr {% if inv[1] > investments[1]  %} class="red" {% endif %}>
       <td>   Amount: {{ inv[0] }} </td>
       <td> Rate: {{ inv[1] }}    </td>
     </tr>

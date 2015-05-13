@@ -30,6 +30,7 @@ def weird(id):
     #Sorting by rate value
     sbr = sorted(totals, key=itemgetter(1))
     total = 0 # total loan amount
+    max_rate = 0 
     values = []
     rates = []
     raw = requests.get("https://api.bitlendingclub.com/api/loan/{id}".format(id=id))
@@ -44,11 +45,10 @@ def weird(id):
         values.append(part[0])
         rates.append(part[1])
     #Nominal rate
-    max_rate = 1000
     term = raw.json()['loans'][0]['term']
     real_rate = float(max_rate*(365.0/term))
     caps = [(x, y) for x in values for y in rates]
-    return sorted(caps, key=itemgetter(1))
+    return sorted(caps, key=itemgetter(1)), max_rate
 
 def loan_chart(id):
     target = "https://api.bitlendingclub.com/api/investments/{id}".format(id=id)

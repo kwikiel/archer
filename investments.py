@@ -85,5 +85,5 @@ def loan_chart(id):
     print("Loan amount: {}".format(cutoff))
     plt.axvline(cutoff, color='r', linewidth=10)
     #Different id
-    filename = "/home/kacper/lendon/static/images/{0}.png".format(id)
+    filename = "static/images/{0}.png".format(id)
     plt.savefig(filename)

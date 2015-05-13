@@ -3,3 +3,4 @@ venv/
 *.pyc
 static/images/*
 static/images
+static/images/*

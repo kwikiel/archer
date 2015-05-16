@@ -8,6 +8,11 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route('/shark')
+def shark():
+   return "Shark"
+
+
 @app.route('/list_loans')
 def listing():
    listing = get_funded_loans()

@@ -10,7 +10,11 @@ def index():
 
 @app.route('/shark')
 def shark():
-   return "Shark"
+   loans = get_funded_loans()
+   levelup = []
+   for loan in loans:
+      levelup.append([(summary(loan)['real_rate']), summary(loan)['id']])
+   return render_template("shark.html", loans_list = levelup)
 
 
 @app.route('/list_loans')

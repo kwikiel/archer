@@ -23,7 +23,7 @@ def listing():
    listing = get_funded_loans()
    superlist = []
    for loan in listing:
-      superlist.append( [ [loan], [weird(loan)[1]] ] )
+      superlist.append( [ [loan], [ summary(loan)['real_rate'] ]] )
    supersorted = sorted(superlist, key=itemgetter(1))
    brt = supersorted[::-1]
    return render_template("list_loans.html", listing=listing, superlist=brt)

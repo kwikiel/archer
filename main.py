@@ -8,14 +8,13 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template("index.html")
-#Meh
-@app.route('/shark')
-def shark():
-   loans = get_funded_loans()
-   levelup = []
-   for loan in loans:
-      levelup.append([(summary(loan)['real_rate']), summary(loan)['id']])
-   return render_template("shark.html", loans_list = levelup)
+
+@app.route('/loan/<int:id>')
+def nice_view(id):
+   info = summary(id)
+   id = id
+   loan_chart(id)
+   return render_template("nice.html", info=info, id=id)
 
 
 @app.route('/list_loans')
@@ -36,4 +35,4 @@ def charts(id):
    return render_template("loan.html", id=id, all_data = all_data)
 
 if __name__ == '__main__':
-   app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
+   app.run(host='0.0.0.0', port=5000)

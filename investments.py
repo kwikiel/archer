@@ -74,7 +74,7 @@ def loan_chart(id):
         values.append(total)
         rates.append(part[1])
 
-    plt.plot(values,rates)
+    plt.plot(values,rates, linewidth=10.0)
     plt.ylabel('Nominal  %') #Ylabel
     plt.xlabel('Bitcoin amount')
     #Getting metadata about loan

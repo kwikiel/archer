@@ -43,19 +43,17 @@ def summary(id):
     #Nominal rate and real rate etc
 
     info = {}
-    term = raw.json()['loans'][0]['term']
-    info['term'] = term
+    keys = raw.json()['loans'][0].keys()
+    term = raw.json()['loans'][0]['term'] 
+    for key in keys:
+        info[key] = raw.json()['loans'][0][key]
+    #Max rate things
     if max_rate:
         real_rate = float(max_rate*(365.0/term))
     else:
-        real_rate = float(last_inv*(365.0/term))
+        real_rate = float(last_inv*(365.0/term)) 
     info['real_rate'] = real_rate
-    caps = [(x, y) for x in values for y in rates]
-    investments =  sorted(caps, key=itemgetter(1))
-    info['investments'] = investments
     info['max_rate'] = max_rate
-    info['last'] = last_inv
-    info['id'] = id
     return info
 
 def loan_chart(id):

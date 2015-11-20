@@ -1,7 +1,5 @@
 import requests
 from operator import itemgetter
-from matplotlib import pyplot as plt
-
 
 def get_funded_loans():
     """

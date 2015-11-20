@@ -9,7 +9,7 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/loan/<int:id>')
+@app.route('/nice/<int:id>')
 def nice_view(id):
    info = summary(id)
    id = id

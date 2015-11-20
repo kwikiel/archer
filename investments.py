@@ -1,6 +1,5 @@
 import requests
 from operator import itemgetter
-import obviouslybrokenthing
 
 def get_funded_loans():
     """

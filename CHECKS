@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 WAIT=10     # Wait 1/2 minute
 TIMEOUT=60  # Timeout after a minute
 ATTEMPTS=2  # attempt checks 10 times
 
-/                       Lendon
-=======
-WAIT=3
->>>>>>> parent of e98b918... Checking checks file for failed deploy
+/ Lendon

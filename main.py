@@ -3,6 +3,7 @@ from flask import render_template, url_for
 from investments import loan_chart, get_funded_loans, weird
 from agregate import *
 from operator import itemgetter
+import sys
 app = Flask(__name__)
 
 @app.route('/')
@@ -35,4 +36,5 @@ def charts(id):
    return render_template("loan.html", id=id, all_data = all_data)
 
 if __name__ == '__main__':
-   app.run(host='0.0.0.0', port=5000, debug=True)
+   app.config['DEBUG'] = False
+   app.run(host='0.0.0.0', port=5000)

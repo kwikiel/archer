@@ -4,7 +4,10 @@ from investments import loan_chart, get_funded_loans, weird
 from agregate import *
 from operator import itemgetter
 import sys
+from werkzeug.contrib.cache import SimpleCache
+
 app = Flask(__name__)
+cache = SimpleCache()
 
 @app.route('/')
 def index():
@@ -20,13 +23,16 @@ def nice_view(id):
 
 @app.route('/list_loans')
 def listing():
-   listing = get_funded_loans()
-   superlist = []
-   for loan in listing:
-      superlist.append( [ [loan], [ summary(loan)['real_rate'] ]] )
-   supersorted = sorted(superlist, key=itemgetter(1))
-   brt = supersorted[::-1]
-   return render_template("list_loans.html", listing=listing, superlist=brt)
+   brt = cache.get('loans')
+   if brt is None:
+      listing = get_funded_loans()
+      superlist = []
+      for loan in listing:
+        superlist.append( [ [loan], [ summary(loan)['real_rate'] ]] )
+      supersorted = sorted(superlist, key=itemgetter(1))
+      brt = supersorted[::-1]
+      cache.set('loans', brt, timeout=5*60) 
+   return render_template("list_loans.html", superlist=brt)
 
 
 @app.route('/loan/<int:id>')

@@ -4,10 +4,10 @@ from investments import loan_chart, get_funded_loans, weird
 from agregate import *
 from operator import itemgetter
 import sys
-from werkzeug.contrib.cache import SimpleCache
+from flask.ext.cache import Cache
 
 app = Flask(__name__)
-cache = SimpleCache()
+cache = Cache(app,config={'CACHE_TYPE': 'simple'})
 
 @app.route('/')
 def index():
@@ -29,5 +29,5 @@ def listing():
 
 
 if __name__ == '__main__':
-   app.config['DEBUG'] = False
+   app.config['DEBUG'] = True
    app.run(host='0.0.0.0', port=5000)

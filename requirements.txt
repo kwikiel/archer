@@ -9,4 +9,3 @@ argparse==1.2.1
 itsdangerous==0.24
 requests==2.8.1
 wheel==0.24.0
-wsgiref==0.1.2

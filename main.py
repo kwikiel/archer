@@ -19,7 +19,7 @@ def listing():
    if brt is None:
       listing = get_funded_loans()
       superlist = []
-      # TODO refactor this below
+      # refactor this below
       for loan in listing:
         superlist.append( [ [loan], [ summary(loan)['real_rate'] ]] )
       supersorted = sorted(superlist, key=itemgetter(1))

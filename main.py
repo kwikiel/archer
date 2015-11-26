@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from flask import Flask
 from flask import render_template, url_for
 from investments import loan_chart, get_funded_loans, weird

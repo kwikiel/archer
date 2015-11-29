@@ -1,1 +1,1 @@
-web: /usr/bin/python main.py
+web: /usr/bin/python3 main.py

@@ -13,7 +13,7 @@ cache = Cache(app,config={'CACHE_TYPE': 'simple'})
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("cards.html")
 
 @app.route('/list_loans')
 def listing():
@@ -26,7 +26,7 @@ def listing():
         superlist.append( [ [loan], [ summary(loan)['real_rate'] ]] )
       supersorted = sorted(superlist, key=itemgetter(1))
       brt = supersorted[::-1]
-      cache.set('loans', brt, timeout=5*60) 
+      cache.set('loans', brt, timeout=5*60)
    return render_template("list_loans.html", superlist=brt)
 
 

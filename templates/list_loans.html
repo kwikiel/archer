@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
- <h1>Currently funded loans</h1>
- <ul class="collection">
-  {% for loan in superlist %}
-  <li class="collection-item dismissable">
-   Loan ID: <a href="loan/{{ loan[0][0] }}">{{ loan[0][0] }}</a> Rate: {{ loan[1][0]|round }}
-  <a class="waves-effect waves-light btn right" href="https://bitlendingclub.com/loan/browse/lid/{{ loan[0][0] }}">Invest</a> 
-  </li>
-  {% endfor %}
- </ul>
+<table>
+        <thead>
+          <tr>
+              <th data-field="lid">Loan ID</th>
+              <th data-field="rate">Rate</th>
+              <th data-field="action">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+ {% for loan in superlist %}
+       <tr>
+        <td>{{ loan[0][0] }}</td>
+        <td>{{ loan[1][0]|round }}</td>
+       </tr>
+ {% endfor %}
+        </tbody>
+      </table>
 </div>
 {% endblock %}

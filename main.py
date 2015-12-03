@@ -2,7 +2,8 @@
 
 from flask import Flask
 from flask import render_template
-from investments import get_funded_loans, summary
+from investments import get_funded_loans
+from agregate import summary
 from operator import itemgetter
 from flask.ext.cache import Cache
 

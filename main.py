@@ -13,7 +13,7 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 @app.route('/')
 def index():
-    return render_template("cards.html")
+    return render_template("list_loans.html")
 
 
 @app.route('/list_loans')

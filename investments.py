@@ -1,11 +1,13 @@
 import requests
 from operator import itemgetter
 
+
 def get_funded_loans():
     """
     Fetching current 100% loans available to bid
     """
-    raws = requests.get("http://api.bitlendingclub.com/api/loans?status=funding&denomination=btc&fundedFrom=50")
+
+    raws = requests.get("http://api.bitlendingclub.com/api/loans?status=funding&denomination=btc&fundedFrom=10")
     loan_list = []
     for loan in raws.json()['loans']:
         loan_list.append(loan['id'])
@@ -17,6 +19,8 @@ def best_rate(id):
     """
     Best nominal rate for investments
     """
+
+
     target = "https://api.bitlendingclub.com/api/investments/{id}".format(id=id)
     r = requests.get(target)
     totals = []

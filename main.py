@@ -29,8 +29,3 @@ def listing():
             brt = supersorted[::-1]
         cache.set('loans', brt, timeout=6*60)
     return render_template("list_loans.html", superlist=brt)
-
-
-if __name__ == '__main__':
-    app.config['DEBUG'] = False
-    app.run(host='0.0.0.0', port=5000)

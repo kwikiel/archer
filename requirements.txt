@@ -4,7 +4,7 @@ Flask-SQLAlchemy==2.1
 Jinja2==2.8
 MarkupSafe==0.23
 SQLAlchemy==1.0.9
-Werkzeug==0.11.2
+Werkzeug==0.15.5
 argparse==1.2.1
 beautifulsoup4==4.4.1
 gunicorn==19.4.1
